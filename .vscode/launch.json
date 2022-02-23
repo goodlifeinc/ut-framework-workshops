@@ -13,6 +13,26 @@
 			],
 			"program": "${workspaceFolder}\\examples\\01.HelloWorld\\index.js",
 			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch Unit Test Index",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\examples\\02.UnitTest\\index.js",
+			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch Unit Test",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\examples\\02.UnitTest\\test.js",
+			"console": "integratedTerminal",
 		}
 	]
 }
