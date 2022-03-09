@@ -12,6 +12,7 @@
   "dependencies": {
     "tap": "^15.1.6",
     "ut-function.dispatch": "^1.4.1",
+    "ut-gateway": "^7.4.1",
     "ut-port-script": "^7.2.0",
     "ut-run": "^10.64.13"
   }

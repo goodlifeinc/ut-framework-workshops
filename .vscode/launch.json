@@ -33,6 +33,26 @@
 			],
 			"program": "${workspaceFolder}\\examples\\02.UnitTest\\test.js",
 			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch API",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\examples\\03.API\\index.js",
+			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch API Gateway",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\examples\\04.API Gateway\\index.js",
+			"console": "integratedTerminal",
 		}
 	]
 }

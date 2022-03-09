@@ -1,0 +1,23 @@
+### hello world
+POST http://localhost:8090/rpc/subject/object/predicate
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {}
+}
+
+### hello john
+POST http://localhost:8090/rpc/subject/object/predicate
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {
+        "name": "1"
+    }
+}
