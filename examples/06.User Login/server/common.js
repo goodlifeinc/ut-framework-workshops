@@ -7,7 +7,8 @@ module.exports = {
 		api: [
 			'/oauth2-redirect.html',
 			'/api/{path*}',
-			'/rpc/subject/{path*}'
+			'/rpc/subject/{path*}',
+			'/rpc/user/{path*}'
 		]
 	},
 	utHello: {

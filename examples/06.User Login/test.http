@@ -9,9 +9,26 @@ Content-Type: application/json
     "params": {}
 }
 
+### login
+# @name login
+POST http://localhost:8080/rpc/user/user/login
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.login",
+    "params": {
+        "name": "john",
+        "password": "123"
+    }
+}
+
 ### hello john
+@token = {{login.response.body.$.result}}
 POST http://localhost:8080/rpc/subject/object/predicate
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "id": 1,

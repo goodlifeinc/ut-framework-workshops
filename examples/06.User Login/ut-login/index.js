@@ -5,26 +5,23 @@ module.exports = () =>
         return {
             orchestrator: [
                 dispatch({
-                    "login.token.create": ({ name }) => {
-                        return config.jwtToken;
+                    "login.token.create": ({ name, actorId }) => {
+                        return [config.jwtToken, name, actorId].join(":");
                     },
-                    "login.token.verify": ({ token }) => {
-                        return token === config.jwtToken;
+                    "login.token.verify": (_, $meta) => {
+                        const { authorization = null } =
+                            $meta?.httpRequest?.headers;
+                        if (!authorization) {
+                            throw new Error("Missing Authorization header");
+                        }
+                        const [token, name, actorId] = authorization
+                            .split("Bearer ")[1]
+                            .split(":");
+                        const valid = token === config.jwtToken;
+                        if (!valid) throw new Error("Unauthorized");
+                        return { name, actorId };
                     },
                 }),
-            ],
-            gateway: [
-                function validation({ joi }) {
-                    return {
-                        // 'subject.object.predicate': () => ({
-                        //     auth: false,
-                        //     params: joi.object({
-                        //         name: joi.string().min(2).optional()
-                        //     }),
-                        //     result: joi.string()
-                        // })
-                    };
-                },
-            ],
+            ]
         };
     };
