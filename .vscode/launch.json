@@ -53,6 +53,16 @@
 			],
 			"program": "${workspaceFolder}\\examples\\04.API Gateway\\index.js",
 			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch User Login",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\examples\\06.User Login\\index.js",
+			"console": "integratedTerminal",
 		}
 	]
 }
