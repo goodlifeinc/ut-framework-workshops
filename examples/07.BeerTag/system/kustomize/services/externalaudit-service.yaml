@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: externalaudit
+    app.kubernetes.io/component: ut-audit
+    app.kubernetes.io/instance: externalaudit_5.7.13
+    app.kubernetes.io/name: externalaudit
+    app.kubernetes.io/version: 5.7.13
+    ut.layer: utAudit.orchestrator
+  name: externalaudit-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: externalaudit
+  type: ClusterIP

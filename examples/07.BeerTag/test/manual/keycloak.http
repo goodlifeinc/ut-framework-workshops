@@ -1,0 +1,19 @@
+# To enable Keycloak login, make sure you have a configuration similar to:
+# utLogin:
+#   login:
+#     issuers:
+#       keycloak:
+#         configuration: http://192.168.133.220:9120/auth/realms/Allianz/.well-known/openid-configuration
+#         audience: ut
+#         usernameClaim: preferred_username
+#         usernamePrefix: keycloak/
+#         rolesClaim: resource_access.ut.roles
+#         onboardOrganization: Software Group
+#         onboardRole:
+#           - XXX
+#         initiate:
+#           client_id: ut
+#           redirect_uri: http://localhost:8004/rpc/login/oidc/verify/%2Fa%2Fbrowser%2Fadmin.html
+#
+
+GET http://localhost:8004/rpc/login/oidc/initiate/keycloak

@@ -1,0 +1,205 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: solutionapi
+spec:
+  rules:
+    - host: solution.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/help
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /oauth2-redirect.html
+            pathType: Exact
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /aa/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /a/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /api/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /a/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /api/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /a/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /api/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /a/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /api/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /a/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /api/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /a/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /api/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /a/bulk
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /api/bulk
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/bulk
+            pathType: Prefix
+  tls:
+    - hosts:
+        - solution.application.k8s.softwaregroup.com
+      secretName: solutionapi-tls

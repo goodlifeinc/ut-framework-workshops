@@ -1,0 +1,62 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-create
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - args:
+            - server
+            - --overlay=db
+            - --run.stop
+            - --utLog.streams.fluentbit=false
+            - --config=/etc/ut_application_uat/rc
+          env:
+            - name: UT_ENV
+              value: uat
+          image: impl
+          imagePullPolicy: Always
+          name: ut
+          resources:
+            limits:
+              cpu: "1"
+              memory: 250M
+            requests:
+              cpu: "0.01"
+              memory: 100M
+          volumeMounts:
+            - mountPath: /etc/ut_application_uat
+              name: config
+            - mountPath: /app/.ut_application_uatrc
+              name: apprc
+              subPath: .ut_application_uatrc
+            - mountPath: /etc/ut_application_uatrc
+              name: etcrc
+              subPath: ut_application_uatrc
+      imagePullSecrets:
+        - name: docker
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      restartPolicy: Never
+      volumes:
+        - name: config
+          secret:
+            secretName: config
+        - name: apprc
+          secret:
+            items:
+              - key: rc.yaml
+                path: .ut_application_uatrc
+            secretName: rc
+        - name: etcrc
+          secret:
+            items:
+              - key: etcrc.yaml
+                path: ut_application_uatrc
+            optional: true
+            secretName: etcrc

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rule
+    app.kubernetes.io/component: ut-rule
+    app.kubernetes.io/instance: rule_12.1.6
+    app.kubernetes.io/name: rule
+    app.kubernetes.io/version: 12.1.6
+    ut.layer: utRule.orchestrator
+  name: rule-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: rule
+  type: ClusterIP

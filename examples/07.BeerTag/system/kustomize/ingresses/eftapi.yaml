@@ -1,0 +1,100 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: eftapi
+spec:
+  rules:
+    - host: eft.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /oauth2-redirect.html
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /a/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /api/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: transferflow-service
+                port:
+                  name: http-jsonrpc
+            path: /a/transferFlow
+            pathType: Prefix
+          - backend:
+              service:
+                name: transferflow-service
+                port:
+                  name: http-jsonrpc
+            path: /api/transferFlow
+            pathType: Prefix
+          - backend:
+              service:
+                name: transferflow-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/transferFlow
+            pathType: Prefix
+  tls:
+    - hosts:
+        - eft.application.k8s.softwaregroup.com
+      secretName: eftapi-tls

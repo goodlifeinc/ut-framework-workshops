@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customer
+    app.kubernetes.io/component: ut-customer
+    app.kubernetes.io/instance: customer_10.3.41
+    app.kubernetes.io/name: customer
+    app.kubernetes.io/version: 10.3.41
+    ut.layer: utCustomer.orchestrator
+  name: customer-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: customer
+  type: ClusterIP

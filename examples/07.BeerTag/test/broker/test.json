@@ -1,0 +1,16 @@
+{
+    "implementation": "application",
+    "console": false,
+    "repl": false,
+    "utLog": false,
+    "utBus": {
+        "broker": {
+            "logLevel": "error",
+            "socket": "test",
+            "socketPid": true
+        }
+    },
+    "utPort": {
+        "concurrency": 200
+    }
+}

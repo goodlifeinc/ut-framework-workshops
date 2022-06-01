@@ -1,0 +1,91 @@
+{
+    "k8s": {
+        "namespace": "application",
+        "container": {
+            "imagePullPolicy": "Always"
+        },
+        "pod": {
+            "nodeSelector": {
+                "kubernetes.io/arch": "amd64"
+            }
+        },
+        "fluentbit": {
+            "stream": true
+        },
+        "ingress": {
+            "tls": true
+        }
+    },
+    "eftApi": {
+        "host": "eft.application.k8s.softwaregroup.com"
+    },
+    "cmsApi": {
+        "host": "cms.application.k8s.softwaregroup.com"
+    },
+    "adminApi": {
+        "host": "admin.application.k8s.softwaregroup.com"
+    },
+    "serviceApi": {
+        "host": "service.application.k8s.softwaregroup.com"
+    },
+    "solutionApi": {
+        "host": "solution.application.k8s.softwaregroup.com"
+    },
+    "utPortConsole": {
+        "server": {
+            "host": "console.application.k8s.softwaregroup.com"
+        }
+    },
+    "utFulfill": {
+        "fulfill": {
+            "namespace": ["fulfill", "fulfill/demo"]
+        }
+    },
+    "utSkype": {
+        "skype": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    },
+    "utSpeech": {
+        "jambonz": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        },
+        "listen": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    },
+    "utDialogflow": {
+        "dialogflow": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    },
+    "utMessenger": {
+        "messenger": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    },
+    "utViber": {
+        "viber": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    },
+    "utSlack": {
+        "slack": {
+            "server": {
+                "host": "bot.application.k8s.softwaregroup.com"
+            }
+        }
+    }
+}

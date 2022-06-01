@@ -1,0 +1,38 @@
+POST http://localhost:8090/rpc/ports/beertag/request
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "beertag.session.set",
+    "id": 1,
+    "params": [{
+        "id": 1,
+        "data": 123
+    }, {}]
+}
+
+###
+POST http://localhost:8090/rpc/ports/beertag/request
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "beertag.session.get",
+    "id": 1,
+    "params": [{
+        "id": 1
+    }, {}]
+}
+
+###
+POST http://localhost:8090/rpc/ports/beertag/request
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "beertag.session.delete",
+    "id": 1,
+    "params": [{
+        "id": 1
+    }, {}]
+}

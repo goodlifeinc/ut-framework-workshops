@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bot
+    app.kubernetes.io/component: ut-fulfill
+    app.kubernetes.io/instance: bot_7.9.5
+    app.kubernetes.io/name: bot
+    app.kubernetes.io/version: 7.9.5
+    ut.layer: utFulfill.demo
+  name: loan-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: bot
+  type: ClusterIP

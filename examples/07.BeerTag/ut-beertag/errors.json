@@ -1,0 +1,10 @@
+{
+    "beertag":"Beertag error",
+    "beertag.zoneNotFound": "Zone '{zone}' not found",
+    "beertag.fooNotFound": "Foo ({fooId}) not found",
+    "beertag.colorNotFound": "Color {color} not found",
+    "example.auth": {
+        "statusCode": 401,
+        "message": "Failed authentication"
+    }
+}

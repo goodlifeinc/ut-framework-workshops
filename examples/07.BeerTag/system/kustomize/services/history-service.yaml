@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: history
+    app.kubernetes.io/component: ut-history
+    app.kubernetes.io/instance: history_3.3.2
+    app.kubernetes.io/name: history
+    app.kubernetes.io/version: 3.3.2
+    ut.layer: utHistory.orchestrator
+  name: history-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: history
+  type: ClusterIP

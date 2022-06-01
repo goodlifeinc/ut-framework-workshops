@@ -1,0 +1,2 @@
+list:
+  - {alias: 'utBeertag.foo', name: 'Foo', description: 'Beertag foo categories'}

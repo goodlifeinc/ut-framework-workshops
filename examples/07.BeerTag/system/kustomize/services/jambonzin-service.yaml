@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: chat
+    app.kubernetes.io/component: ut-speech
+    app.kubernetes.io/instance: chat_7.10.2
+    app.kubernetes.io/name: chat
+    app.kubernetes.io/version: 7.10.2
+    ut.layer: utSpeech.orchestrator
+  name: jambonzin-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: chat
+  type: ClusterIP

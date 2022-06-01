@@ -1,0 +1,20 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "terminal.integrated.scrollback": 10000,
+    "_debug.node.autoAttach": "on",
+    "_gitlens.codeLens.authors.enabled": false,
+    "_gitlens.codeLens.recentChange.enabled": false,
+    "_gitlens.codeLens.enabled": false,
+    "_gitlens.currentLine.enabled": false,
+    "_editor.foldingHighlight": false,
+    "_editor.highlightActiveIndentGuide": false,
+    "_editor.renderLineHighlight": "none",
+    "_scm.diffDecorationsGutterVisibility": "hover",
+    "_javascript.suggest.enabled": false,
+    "_editor.minimap.enabled": false,
+    "_breadcrumbs.enabled": false,
+    "_javascript.suggestionActions.enabled": false,
+    "cSpell.words": [
+        "jambonz"
+    ]
+}

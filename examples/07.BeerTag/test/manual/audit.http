@@ -1,0 +1,26 @@
+### externalAudit.action.fetch
+POST http://localhost:8004/rpc HTTP/1.1
+accept: application/json
+x-xsrf-token: 522640df-c368-451a-8c7d-70d457e42422
+
+{
+    "id":12,
+    "jsonrpc":"2.0",
+    "method":"externalAudit.action.fetch",
+    "params":{
+        "actionCategoryId": "1"
+    }
+}
+
+### externalAudit.action.categoryFetch
+POST http://localhost:8004/rpc HTTP/1.1
+accept: application/json
+x-xsrf-token: 522640df-c368-451a-8c7d-70d457e42422
+
+{
+    "id":12,
+    "jsonrpc":"2.0",
+    "method":"externalAudit.action.categoryFetch",
+    "params":{
+    }
+}

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: email
+    app.kubernetes.io/component: ut-email
+    app.kubernetes.io/instance: email_7.2.2
+    app.kubernetes.io/name: email
+    app.kubernetes.io/version: 7.2.2
+    ut.layer: utEmail.adapter
+  name: utemail-email-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: email
+  type: ClusterIP

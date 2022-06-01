@@ -1,0 +1,22 @@
+.dashboardImg {
+    background: url('./images/dashboard.png');
+    background-size: contain;
+}
+
+.loginLogoHeader {
+    background: url('./images/serviceLogo.png') no-repeat center !important;
+}
+
+.loginLogoFooter {
+    background: url('./images/logoFooter.png') no-repeat center !important;
+}
+
+.homeIcon {
+    width: 20px;
+    height: 20px;
+    background: url('./images/home.png') no-repeat center !important;
+}
+
+.homeIcon:hover {
+    background: url('./images/home_hover.png') no-repeat center !important;
+}

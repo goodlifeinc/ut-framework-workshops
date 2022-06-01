@@ -1,0 +1,52 @@
+category:
+  - name: 'beertag'
+action:
+  - {category: 'beertag', action: 'beertag.system.nav', description: 'Beertag tab'}
+  - {category: 'beertag', action: 'beertag.brewery.fetch', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.get', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.edit', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.add', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.delete', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.own', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.admin', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.brewery.review', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.fetch', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.get', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.edit', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.add', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.delete', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.assign', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beerList.manage', description: 'Beertag fetch foo'}
+  - {category: 'beertag', action: 'beertag.beer.review', description: 'Beertag fetch foo'}
+field:
+  - {code: beertag, name: beertag}
+role:
+  - {field: beertag, role: Manage Breweries}
+  - {field: beertag, role: Manage Own Brewery}
+  - {field: beertag, role: Manage Admin Brewery}
+  - {field: beertag, role: View Brewery}
+  - {field: beertag, role: Manage Beers Admin}
+  - {field: beertag, role: Manage Beers in Stand}
+  - {field: beertag, role: View Beer}
+  - {field: beertag, role: Manage Beer List}
+  - {field: beertag, role: Write Beer Review}
+  - {field: beertag, role: Write Brewery Review}
+roleAction:
+  - {role: Manage Breweries, action: 'beertag.brewery.fetch'}
+  - {role: Manage Breweries, action: 'beertag.brewery.get'}
+  - {role: Manage Breweries, action: 'beertag.brewery.edit'}
+  - {role: Manage Breweries, action: 'beertag.brewery.add'}
+  - {role: Manage Breweries, action: 'beertag.brewery.delete'}
+  - {role: Manage Own Brewery, action: 'beertag.brewery.own'}
+  - {role: Manage Admin Brewery, action: 'beertag.brewery.admin'}
+  - {role: View Brewery, action: 'beertag.brewery.get'}
+  - {role: View Brewery, action: 'beertag.brewery.fetch'}
+  - {role: Manage Beers Admin, action: 'beertag.beer.edit'}
+  - {role: Manage Beers Admin, action: 'beertag.beer.add'}
+  - {role: Manage Beers Admin, action: 'beertag.beer.delete'}
+  - {role: Manage Beers in Stand, action: 'beertag.beer.assign'}
+  - {role: View Beer, action: 'beertag.beer.fetch'}
+  - {role: View Beer, action: 'beertag.beer.get'}
+  - {role: Manage Beer List, action: 'beertag.beerList.manage'}
+  - {role: Write Beer Review, action: 'beertag.beer.review'}
+  - {role: Write Brewery Review, action: 'beertag.brewery.review'}

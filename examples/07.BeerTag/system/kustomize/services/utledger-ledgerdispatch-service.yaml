@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ledger
+    app.kubernetes.io/component: ut-ledger
+    app.kubernetes.io/instance: ledger_4.5.8
+    app.kubernetes.io/name: ledger
+    app.kubernetes.io/version: 4.5.8
+    ut.layer: utLedger.orchestrator
+  name: utledger-ledgerdispatch-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: ledger
+  type: ClusterIP

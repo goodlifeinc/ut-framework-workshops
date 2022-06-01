@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: eft
+    app.kubernetes.io/component: ut-pos
+    app.kubernetes.io/instance: eft_7.3.0
+    app.kubernetes.io/name: eft
+    app.kubernetes.io/version: 7.3.0
+    ut.layer: utPos.eft
+  name: posflow-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: eft
+  type: ClusterIP

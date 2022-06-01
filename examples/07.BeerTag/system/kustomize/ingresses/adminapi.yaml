@@ -1,0 +1,471 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: adminapi
+spec:
+  rules:
+    - host: admin.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /oauth2-redirect.html
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/help
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /aa/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /a/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /api/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /a/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /api/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/core
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /a/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /api/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: document-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/document
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /a/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /api/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/customer
+            pathType: Prefix
+          - backend:
+              service:
+                name: externalaudit-service
+                port:
+                  name: http-jsonrpc
+            path: /a/externalAudit
+            pathType: Prefix
+          - backend:
+              service:
+                name: externalaudit-service
+                port:
+                  name: http-jsonrpc
+            path: /api/externalAudit
+            pathType: Prefix
+          - backend:
+              service:
+                name: externalaudit-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/externalAudit
+            pathType: Prefix
+          - backend:
+              service:
+                name: history-service
+                port:
+                  name: http-jsonrpc
+            path: /a/history
+            pathType: Prefix
+          - backend:
+              service:
+                name: history-service
+                port:
+                  name: http-jsonrpc
+            path: /api/history
+            pathType: Prefix
+          - backend:
+              service:
+                name: history-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/history
+            pathType: Prefix
+          - backend:
+              service:
+                name: user-service
+                port:
+                  name: http-jsonrpc
+            path: /a/user
+            pathType: Prefix
+          - backend:
+              service:
+                name: user-service
+                port:
+                  name: http-jsonrpc
+            path: /api/user
+            pathType: Prefix
+          - backend:
+              service:
+                name: user-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/user
+            pathType: Prefix
+          - backend:
+              service:
+                name: policy-service
+                port:
+                  name: http-jsonrpc
+            path: /a/policy
+            pathType: Prefix
+          - backend:
+              service:
+                name: policy-service
+                port:
+                  name: http-jsonrpc
+            path: /api/policy
+            pathType: Prefix
+          - backend:
+              service:
+                name: policy-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/policy
+            pathType: Prefix
+          - backend:
+              service:
+                name: identity-service
+                port:
+                  name: http-jsonrpc
+            path: /a/identity
+            pathType: Prefix
+          - backend:
+              service:
+                name: identity-service
+                port:
+                  name: http-jsonrpc
+            path: /api/identity
+            pathType: Prefix
+          - backend:
+              service:
+                name: identity-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/identity
+            pathType: Prefix
+          - backend:
+              service:
+                name: permission-service
+                port:
+                  name: http-jsonrpc
+            path: /a/permission
+            pathType: Prefix
+          - backend:
+              service:
+                name: permission-service
+                port:
+                  name: http-jsonrpc
+            path: /api/permission
+            pathType: Prefix
+          - backend:
+              service:
+                name: permission-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/permission
+            pathType: Prefix
+          - backend:
+              service:
+                name: agent-service
+                port:
+                  name: http-jsonrpc
+            path: /a/agent
+            pathType: Prefix
+          - backend:
+              service:
+                name: agent-service
+                port:
+                  name: http-jsonrpc
+            path: /api/agent
+            pathType: Prefix
+          - backend:
+              service:
+                name: agent-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/agent
+            pathType: Prefix
+          - backend:
+              service:
+                name: aml-service
+                port:
+                  name: http-jsonrpc
+            path: /a/aml
+            pathType: Prefix
+          - backend:
+              service:
+                name: aml-service
+                port:
+                  name: http-jsonrpc
+            path: /api/aml
+            pathType: Prefix
+          - backend:
+              service:
+                name: aml-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/aml
+            pathType: Prefix
+          - backend:
+              service:
+                name: notice-service
+                port:
+                  name: http-jsonrpc
+            path: /a/notice
+            pathType: Prefix
+          - backend:
+              service:
+                name: notice-service
+                port:
+                  name: http-jsonrpc
+            path: /api/notice
+            pathType: Prefix
+          - backend:
+              service:
+                name: notice-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/notice
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /a/bulk
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /api/bulk
+            pathType: Prefix
+          - backend:
+              service:
+                name: bulk-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/bulk
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /a/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /api/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /a/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /api/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: ledger-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/ledger
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /a/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /api/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: speech-service
+                port:
+                  name: http-jsonrpc
+            path: /a/speech
+            pathType: Prefix
+          - backend:
+              service:
+                name: speech-service
+                port:
+                  name: http-jsonrpc
+            path: /api/speech
+            pathType: Prefix
+          - backend:
+              service:
+                name: speech-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/speech
+            pathType: Prefix
+          - backend:
+              service:
+                name: report-service
+                port:
+                  name: http-jsonrpc
+            path: /a/report
+            pathType: Prefix
+          - backend:
+              service:
+                name: report-service
+                port:
+                  name: http-jsonrpc
+            path: /api/report
+            pathType: Prefix
+          - backend:
+              service:
+                name: report-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/report
+            pathType: Prefix
+  tls:
+    - hosts:
+        - admin.application.k8s.softwaregroup.com
+      secretName: adminapi-tls

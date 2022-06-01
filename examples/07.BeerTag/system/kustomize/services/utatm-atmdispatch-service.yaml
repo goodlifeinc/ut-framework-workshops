@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cms
+    app.kubernetes.io/component: ut-atm
+    app.kubernetes.io/instance: cms_9.4.1
+    app.kubernetes.io/name: cms
+    app.kubernetes.io/version: 9.4.1
+    ut.layer: utAtm.orchestrator
+  name: utatm-atmdispatch-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: cms
+  type: ClusterIP

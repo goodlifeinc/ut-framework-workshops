@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: application_8.10.11
+    app.kubernetes.io/name: ctp
+    app.kubernetes.io/version: 8.10.11
+    version: 8.10.11
+  name: ctp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ctp
+  template:
+    metadata:
+      labels:
+        app: ctp
+        app.kubernetes.io/instance: application_8.10.11
+        app.kubernetes.io/name: ctp
+        app.kubernetes.io/version: 8.10.11
+        version: 8.10.11
+    spec:
+      containers:
+        - args:
+            - server
+            - --service=ctp
+            - --utCtpPayshield.adapter
+            - --utCtpPayshield.orchestrator
+            - --utCtpPan.adapter
+            - --utCtpPan.orchestrator
+            - --utCtpPan.gateway
+            - --utCtpAptra.adapter
+            - --utCtpAptra.orchestrator
+            - --utCtpAptra.gateway
+            - --utCtpIso.adapter
+            - --utCtpIso.orchestrator
+            - --utCtpIso.gateway
+            - --utCtpPos.adapter
+            - --utCtpPos.gateway
+          env:
+            - name: UT_ENV
+              value: uat
+          image: impl
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 10
+            timeoutSeconds: 5
+          name: ut
+          ports:
+            - containerPort: 8090
+              name: http-jsonrpc
+              protocol: TCP
+            - containerPort: 5000
+              name: tcp-ncr
+              protocol: TCP
+            - containerPort: 7779
+              name: http-aptrawss
+              protocol: TCP
+            - containerPort: 14000
+              name: tcp-tcpiso
+              protocol: TCP
+            - containerPort: 7778
+              name: http-isowss
+              protocol: TCP
+            - containerPort: 16000
+              name: tcp-tcppos
+              protocol: TCP
+            - containerPort: 16001
+              name: tcp-updatepos
+              protocol: TCP
+            - containerPort: 7777
+              name: http-poswss
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: "1"
+              memory: 250M
+            requests:
+              cpu: "0.10"
+              memory: 100M
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 2
+          volumeMounts:
+            - mountPath: /etc/ut_application_uat
+              name: config
+            - mountPath: /app/.ut_application_uatrc
+              name: apprc
+              subPath: .ut_application_uatrc
+            - mountPath: /etc/ut_application_uatrc
+              name: etcrc
+              subPath: ut_application_uatrc
+      imagePullSecrets:
+        - name: docker
+      initContainers:
+        - args:
+            - wait
+            - --for=condition=complete
+            - --timeout=300s
+            - job/db-create
+          image: d3fk/kubectl:v1.18
+          name: db-create-wait
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      serviceAccountName: ut
+      volumes:
+        - name: config
+          secret:
+            secretName: config
+        - name: apprc
+          secret:
+            items:
+              - key: rc.yaml
+                path: .ut_application_uatrc
+            secretName: rc
+        - name: etcrc
+          secret:
+            items:
+              - key: etcrc.yaml
+                path: ut_application_uatrc
+            optional: true
+            secretName: etcrc

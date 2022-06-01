@@ -1,0 +1,21 @@
+module.exports = (...params) => [
+    require('ut-login')(...params),
+    require('ut-browser')(...params),
+    require('ut-core')(...params),
+    require('ut-audit')(...params),
+    require('ut-history')(...params),
+    require('ut-user')(...params),
+    require('ut-customer')(...params),
+    require('ut-document')(...params),
+    require('ut-transfer')(...params),
+    require('ut-rule')(...params),
+    require('ut-agent')(...params),
+    require('ut-ledger')(...params),
+    require('ut-bulk-payment')(...params),
+    require('ut-aml')(...params),
+    require('ut-notice')(...params),
+    require('ut-report')(...params),
+    require('ut-mirrors')(...params),
+    require('../impl/browser')(...params),
+    require('ut-front-react')(...params)
+];

@@ -1,0 +1,30 @@
+---
+person:
+  - userName: beertagadmin
+    algorithm: pbkdf2
+    policy: STD_input
+    firstName: AdminBDBMaker
+    lastName: Admin
+    type: password
+    params: '{"salt":"3e2ed876-14d1-4b4b-a72a-7790813d0227","iterations":100000,"keylen":512,"digest":"sha512"}'
+    value: 8e8230b08e6f62abfd5e6c3b3b7b839ffa165d0cc6e478bde6970ab83bdd8e8d0b3f97290392929aee6e5ef03b7f34dc1f59260d2dc76d896a22f4b92c4b5f73ab344045947a2b0957f9c5b6c76cad45fade00675e5a4a2153725a8b555375dd581a9a2214be32cfbcfb95a310bba7aef3b6bc9595bfbee3c5a6e7497427006c344cf7a56381edce702acbf07baf6e11dbbad3b5a477387aac4b3ce9c5c2abe7537c6eba9e235d88a073578d09c50c4c39ea41506f536c6c96fa2e03ecba3308a509eb0fcee8d90d746f7bb7dff5c353a2fa539b69d7fcd7391e37c89ea823efe6fee0185004376c055e21b7573c16a96f80c412d6ddfe734a95863d6d5054cbf6700885c60bd34827193ef188a24f138b6fd87560cb90a59007143fdb9cad2988266242766cdf6a9bdd1dec152783c7e7b9103115b294045a53fab6e8b8a29b845948789e11861dc03e5721d4251291c47b64eb3fc20c9bf0fb51bf9248814df7f89da740febcab23f9be21351457bc61dbb487b2f5c724c2025cad5a68b2754b50e14712ac91045289ac2ccc6e1a3d483e1fd2f7083ddae8616d5613416ea4969ce6b85c07a5b136c63399dac5e519455b01e02798bed15d461c5342afbf4363784875934f2a263c0904707efd03cdd10bb1716ca89cc22defe457b5901e4659c62906f1d7350ff2b3fb9492ba456e487f0cd0eb28158f3b94b438d777c13c
+email:
+  - userName: beertagadmin
+    email: beertagadmin@softwaregroup.com
+    emailTypeId: work
+  
+
+phone:
+  - userName: beertagadmin
+    phoneNumber: '123456789'
+    phoneTypeId: work
+
+assignedPermission:
+  - userName: beertagadmin
+    actorName: BeerTag Admins
+    isDefault: 1
+
+assignedBu:
+  - userName: beertagadmin
+    actorName: Bulgaria
+    isDefault: 1

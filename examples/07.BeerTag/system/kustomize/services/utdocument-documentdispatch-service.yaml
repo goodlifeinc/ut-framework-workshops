@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: document
+    app.kubernetes.io/component: ut-document
+    app.kubernetes.io/instance: document_9.1.2
+    app.kubernetes.io/name: document
+    app.kubernetes.io/version: 9.1.2
+    ut.layer: utDocument.orchestrator
+  name: utdocument-documentdispatch-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: document
+  type: ClusterIP

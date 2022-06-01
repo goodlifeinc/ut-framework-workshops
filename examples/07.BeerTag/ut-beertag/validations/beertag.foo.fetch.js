@@ -1,0 +1,17 @@
+/** @type { import("ut-run").validationFactory } */
+module.exports = ({
+    joi,
+    lib: {
+        fooResult
+    }
+}) => ({
+    'beertag.foo.fetch'() {
+        return {
+            description: 'Foo search',
+            params: joi.object().keys({
+                color: joi.string().max(50)
+            }),
+            result: joi.array().items(fooResult)
+        };
+    }
+});

@@ -1,0 +1,17 @@
+:global :root {
+    --custom-variable: skyblue;
+}
+
+.headerLogo {
+    background: url('./headerLogo.png') no-repeat center !important;
+    background-size: 'contain' !important;
+    width: 95px !important;
+}
+
+.loginTop {
+    background: url('./loginTop.png') no-repeat center !important;
+}
+
+.loginBottom {
+    background: url('./loginBottom.png') no-repeat center !important;
+}

@@ -1,0 +1,10 @@
+{
+    "console": true,
+    "run": {
+        "edit": {
+            "server": {
+                "port": 8000
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wallet
+    app.kubernetes.io/component: ut-wallet
+    app.kubernetes.io/instance: wallet_6.26.8
+    app.kubernetes.io/name: wallet
+    app.kubernetes.io/version: 6.26.8
+    ut.layer: utWallet.orchestrator
+  name: wallet-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: wallet
+  type: ClusterIP

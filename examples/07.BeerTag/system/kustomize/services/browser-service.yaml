@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: portal
+    app.kubernetes.io/component: ut-browser
+    app.kubernetes.io/instance: portal_7.7.2
+    app.kubernetes.io/name: portal
+    app.kubernetes.io/version: 7.7.2
+    ut.layer: utBrowser.gateway
+  name: browser-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: portal
+  type: ClusterIP

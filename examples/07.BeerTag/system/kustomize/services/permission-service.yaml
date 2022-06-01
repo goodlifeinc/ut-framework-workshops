@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: user
+    app.kubernetes.io/component: ut-user
+    app.kubernetes.io/instance: user_10.28.0
+    app.kubernetes.io/name: user
+    app.kubernetes.io/version: 10.28.0
+    ut.layer: utUser.orchestrator
+  name: permission-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: user
+  type: ClusterIP

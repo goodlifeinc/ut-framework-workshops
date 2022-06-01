@@ -1,0 +1,63 @@
+swagger: "2.0"
+info:
+  title: example
+  description: Parking services
+  version: 1.0.0
+paths:
+  /parking/pay:
+    post:
+      security: [] # optionally turn off security check in ut-bus
+      tags:
+        - parking
+      summary: Parking payment
+      description: Pay parking in a city zone
+      operationId: example.parking.pay
+      x-options: # pass options to the hapi route.options
+        payload:
+          parse: false
+      x-ut-receive: example.request.receive # optional receive handler
+      x-ut-errorTransform: example.error.transform # optional error handler
+      consumes:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          type: object
+          properties:
+            city:
+              description: City
+              type: string
+            zone:
+              description: Zone
+              type: string
+          required:
+            - city
+            - zone
+      responses:
+        200:
+          description: Payment details
+          schema:
+            type: object
+            properties:
+              details:
+                type: object
+                properties:
+                  time:
+                    type: string
+                  amount:
+                    type: string
+                required:
+                  - time
+                  - amount
+            required:
+              - details
+security:
+  - jwt: []
+securityDefinitions:
+  basicAuth:
+    type: basic
+  jwt:
+    type: apiKey
+    name: authorization
+    in: header

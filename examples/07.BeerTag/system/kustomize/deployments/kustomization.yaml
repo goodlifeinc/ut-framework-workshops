@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+commonAnnotations:
+  prometheus.io/port: "8090"
+  prometheus.io/scheme: http
+  prometheus.io/scrape: "true"
+kind: Kustomization
+resources:
+  - console.yaml
+  - core.yaml
+  - user.yaml
+  - customer.yaml
+  - document.yaml
+  - transfer.yaml
+  - eft.yaml
+  - wallet.yaml
+  - rule.yaml
+  - ledger.yaml
+  - notice.yaml
+  - bot.yaml
+  - externalaudit.yaml
+  - cms.yaml
+  - misc.yaml
+  - chat.yaml
+  - portal.yaml
+  - report.yaml
+  - email.yaml
+  - ctp.yaml
+  - login.yaml
+  - history.yaml

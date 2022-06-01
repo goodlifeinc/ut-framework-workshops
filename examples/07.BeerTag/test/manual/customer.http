@@ -1,0 +1,29 @@
+@host = localhost:8004
+
+### client credentials flow
+# @name login
+POST http://{{host}}/rpc/login/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=sa&client_secret=123
+
+###
+
+@authToken = {{login.response.body.access_token}}
+
+### customer.organization.fetch
+POST http://{{host}}/rpc/customer/organization/fetch HTTP/1.1
+Content-type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "id":12,
+    "jsonrpc":"2.0",
+    "method":"customer.organization.fetch",
+    "params":{
+        "searchString":"",
+        "pageSize":25,
+        "pageNumber":1,
+        "breadcrumbs":[]
+    }
+}

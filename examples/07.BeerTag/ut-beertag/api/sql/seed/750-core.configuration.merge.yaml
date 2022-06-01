@@ -1,0 +1,4 @@
+configuration:
+  - key: utBeertag.configKey
+    value: configValue
+    description: Demo for configuration

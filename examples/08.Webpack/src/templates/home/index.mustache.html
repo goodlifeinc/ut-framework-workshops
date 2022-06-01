@@ -1,0 +1,16 @@
+<div class="col-md-12 box-shadow-holder">
+    <div class="row">
+        {{#countries}}
+        <div class="col-3 text-center countryInGrid">
+            <a class="countryA" href="/country/{{key}}" data-navigo>
+                <img
+                    class="img img-responsive"
+                    src="https://www.countryflags.io/{{key}}/flat/32.png">
+                <div class="value">
+                        {{value}}
+                </div>
+            </a>
+        </div>
+        {{/countries}}
+    </div>
+</div>

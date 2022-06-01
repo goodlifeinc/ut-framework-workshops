@@ -1,0 +1,72 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: bot-application-k8s-softwaregroup-com
+spec:
+  rules:
+    - host: bot.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: utskype-skype-http-skype
+                port:
+                  name: http-skype
+            path: /skype
+            pathType: Prefix
+          - backend:
+              service:
+                name: utskype-skype-http-skype
+                port:
+                  name: http-skype
+            path: /webchat
+            pathType: Prefix
+          - backend:
+              service:
+                name: utmessenger-messenger-http-messenger
+                port:
+                  name: http-messenger
+            path: /messenger
+            pathType: Prefix
+          - backend:
+              service:
+                name: utviber-viber-http-viber
+                port:
+                  name: http-viber
+            path: /viber
+            pathType: Prefix
+          - backend:
+              service:
+                name: utslack-slack-http-slack
+                port:
+                  name: http-slack
+            path: /slack
+            pathType: Prefix
+          - backend:
+              service:
+                name: utspeech-jambonz-http-jambonz
+                port:
+                  name: http-jambonz
+            path: /jambonz
+            pathType: Prefix
+          - backend:
+              service:
+                name: utspeech-listen-http-listen
+                port:
+                  name: http-listen
+            path: /wss/listen
+            pathType: Prefix
+          - backend:
+              service:
+                name: utdialogflow-dialogflow-http-dialogflow
+                port:
+                  name: http-dialogflow
+            path: /dialogflow
+            pathType: Prefix
+  tls:
+    - hosts:
+        - bot.application.k8s.softwaregroup.com
+      secretName: bot-application-k8s-softwaregroup-com-tls

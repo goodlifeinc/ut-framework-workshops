@@ -1,0 +1,8 @@
+{
+    "adapter": true,
+    "utCard": {
+        "sql": {
+            "integration": true
+        }
+    }
+}

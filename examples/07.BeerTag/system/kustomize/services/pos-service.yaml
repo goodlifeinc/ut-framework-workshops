@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cms
+    app.kubernetes.io/component: ut-pos
+    app.kubernetes.io/instance: cms_7.3.0
+    app.kubernetes.io/name: cms
+    app.kubernetes.io/version: 7.3.0
+    ut.layer: utPos.orchestrator
+  name: pos-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: cms
+  type: ClusterIP

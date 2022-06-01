@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: console-http-ui
+spec:
+  rules:
+    - host: console.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: utportconsole-http-ui
+                port:
+                  name: http-ui
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - console.application.k8s.softwaregroup.com
+      secretName: console-http-ui-tls

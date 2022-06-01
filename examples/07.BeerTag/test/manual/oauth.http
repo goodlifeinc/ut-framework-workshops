@@ -1,0 +1,31 @@
+### CORS
+OPTIONS http://localhost:8004/rpc/login/token
+Access-Control-Request-Method: POST
+Origin: test
+
+### login
+# @name login
+POST http://localhost:8004/rpc/login/auth
+content-type: application/x-www-form-urlencoded
+
+username=sa&password=123
+
+### jwt
+@token = {{login.response.body.$.access_token}}
+POST http://localhost:8004/rpc/user/permission/get
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "user.permission.get",
+    "id": 1,
+    "params": {
+    }
+}
+
+### token
+POST http://localhost:8004/rpc/login/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=umxDEV1CWCV1UPKSq5b9Qg8FHLKI%2B9%2FPMo4ijkEhdEWIJwQy5WWS7M0K0IuvTm3b%2BV%2BZ1MqATqb64VyNCjnnNw%3D%3D&client_id=sa&client_secret=123&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Foauth2-redirect.html

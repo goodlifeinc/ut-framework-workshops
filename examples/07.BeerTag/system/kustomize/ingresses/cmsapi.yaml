@@ -1,0 +1,233 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  name: cmsapi
+spec:
+  rules:
+    - host: cms.application.k8s.softwaregroup.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /oauth2-redirect.html
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api
+            pathType: Prefix
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/customer/organization/graphFetch
+            pathType: Exact
+          - backend:
+              service:
+                name: customer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/customer/organization/list
+            pathType: Exact
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/core/translation/fetch
+            pathType: Exact
+          - backend:
+              service:
+                name: core-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/core/itemName/fetch
+            pathType: Exact
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /a/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /api/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: browser-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/browser
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /a/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /api/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: login-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/login
+            pathType: Prefix
+          - backend:
+              service:
+                name: atm-service
+                port:
+                  name: http-jsonrpc
+            path: /a/atm
+            pathType: Prefix
+          - backend:
+              service:
+                name: atm-service
+                port:
+                  name: http-jsonrpc
+            path: /api/atm
+            pathType: Prefix
+          - backend:
+              service:
+                name: atm-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/atm
+            pathType: Prefix
+          - backend:
+              service:
+                name: pos-service
+                port:
+                  name: http-jsonrpc
+            path: /a/pos
+            pathType: Prefix
+          - backend:
+              service:
+                name: pos-service
+                port:
+                  name: http-jsonrpc
+            path: /api/pos
+            pathType: Prefix
+          - backend:
+              service:
+                name: pos-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/pos
+            pathType: Prefix
+          - backend:
+              service:
+                name: iso-service
+                port:
+                  name: http-jsonrpc
+            path: /a/iso
+            pathType: Prefix
+          - backend:
+              service:
+                name: iso-service
+                port:
+                  name: http-jsonrpc
+            path: /api/iso
+            pathType: Prefix
+          - backend:
+              service:
+                name: iso-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/iso
+            pathType: Prefix
+          - backend:
+              service:
+                name: card-service
+                port:
+                  name: http-jsonrpc
+            path: /a/card
+            pathType: Prefix
+          - backend:
+              service:
+                name: card-service
+                port:
+                  name: http-jsonrpc
+            path: /api/card
+            pathType: Prefix
+          - backend:
+              service:
+                name: card-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/card
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /a/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /api/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: rule-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/rule
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /a/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /api/transfer
+            pathType: Prefix
+          - backend:
+              service:
+                name: transfer-service
+                port:
+                  name: http-jsonrpc
+            path: /rpc/transfer
+            pathType: Prefix
+  tls:
+    - hosts:
+        - cms.application.k8s.softwaregroup.com
+      secretName: cmsapi-tls

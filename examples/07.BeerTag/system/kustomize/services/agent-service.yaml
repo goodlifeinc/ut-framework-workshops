@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: misc
+    app.kubernetes.io/component: ut-agent
+    app.kubernetes.io/instance: misc_7.4.15
+    app.kubernetes.io/name: misc
+    app.kubernetes.io/version: 7.4.15
+    ut.layer: utAgent.orchestrator
+  name: agent-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: misc
+  type: ClusterIP

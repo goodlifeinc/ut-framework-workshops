@@ -1,0 +1,52 @@
+{
+    "service": "admin",
+    "debug": true,
+    "repl": false,
+    "scheduler": false,
+    "utLog": {
+        "streams": {
+            "sentry": {
+                "level": "error",
+                "stream": "../sentryNodeStream",
+                "streamConfig": {
+                    "dsn": "http://3e94b53a00eb421a8ca8a1f65cd39532@sentry.k8s.softwaregroup-bg.com/5",
+                    "patchGlobal": false,
+                    "logger": "impl-application"
+                },
+                "type": "raw"
+            }
+        }
+    },
+    "sqlStandard": true,
+    "run": {
+        "logLevel": "error"
+    },
+    "utPort": {
+        "logLevel": "error",
+        "noRecursion": "error",
+        "debug": true,
+        "concurrency": 200
+    },
+    "utPortal": true,
+    "utLoan": {
+        "sqlStandard": true,
+        "sqlTest": true
+    },
+    "utBus": {
+        "serviceBus": {
+            "logLevel": "error",
+            "requireMeta": "error",
+            "canSkipSocket": false,
+            "jsonrpc": {
+                "debug": true,
+                "host": "localhost"
+            }
+        }
+    },
+    "utDocument": {
+        "test": {
+            "pdf": true
+        }
+    },
+    "utNifi": false
+}

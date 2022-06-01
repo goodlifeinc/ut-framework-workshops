@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: application_8.10.11
+    app.kubernetes.io/name: transfer
+    app.kubernetes.io/version: 8.10.11
+    version: 8.10.11
+  name: transfer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: transfer
+  template:
+    metadata:
+      labels:
+        app: transfer
+        app.kubernetes.io/instance: application_8.10.11
+        app.kubernetes.io/name: transfer
+        app.kubernetes.io/version: 8.10.11
+        version: 8.10.11
+    spec:
+      containers:
+        - args:
+            - server
+            - --service=transfer
+            - --adapter
+            - --utTransfer.adapter
+            - --utTransfer.orchestrator
+            - --utTransfer.gateway
+          env:
+            - name: UT_ENV
+              value: uat
+          image: impl
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 6
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 10
+            timeoutSeconds: 5
+          name: ut
+          ports:
+            - containerPort: 8090
+              name: http-jsonrpc
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: "1"
+              memory: 250M
+            requests:
+              cpu: "0.10"
+              memory: 100M
+          startupProbe:
+            failureThreshold: 60
+            httpGet:
+              path: /healthz
+              port: http-jsonrpc
+            periodSeconds: 2
+          volumeMounts:
+            - mountPath: /etc/ut_application_uat
+              name: config
+            - mountPath: /app/.ut_application_uatrc
+              name: apprc
+              subPath: .ut_application_uatrc
+            - mountPath: /etc/ut_application_uatrc
+              name: etcrc
+              subPath: ut_application_uatrc
+      imagePullSecrets:
+        - name: docker
+      initContainers:
+        - args:
+            - wait
+            - --for=condition=complete
+            - --timeout=300s
+            - job/db-create
+          image: d3fk/kubectl:v1.18
+          name: db-create-wait
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      serviceAccountName: ut
+      volumes:
+        - name: config
+          secret:
+            secretName: config
+        - name: apprc
+          secret:
+            items:
+              - key: rc.yaml
+                path: .ut_application_uatrc
+            secretName: rc
+        - name: etcrc
+          secret:
+            items:
+              - key: etcrc.yaml
+                path: ut_application_uatrc
+            optional: true
+            secretName: etcrc

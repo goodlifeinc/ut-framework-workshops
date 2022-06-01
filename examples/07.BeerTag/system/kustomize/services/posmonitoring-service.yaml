@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ctp
+    app.kubernetes.io/component: ut-ctp-pos
+    app.kubernetes.io/instance: ctp_8.2.2
+    app.kubernetes.io/name: ctp
+    app.kubernetes.io/version: 8.2.2
+    ut.layer: utCtpPos.adapter
+  name: posmonitoring-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: ctp
+  type: ClusterIP

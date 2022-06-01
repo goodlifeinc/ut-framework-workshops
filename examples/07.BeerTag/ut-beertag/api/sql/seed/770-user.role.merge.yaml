@@ -1,0 +1,35 @@
+role:
+  - {role: BeerTag Admins, description: BeerTag Admins, policy: STD}
+  - {role: BeerTag Brewery Owners, description: BeerTag Brewery Owners, policy: STD}
+  - {role: BeerTag Public Users, description: BDB Admin Checker, policy: STD}
+assignedPermission:
+  - {role: BeerTag Admins, actorName: Manage Breweries, isDefault: 1, object: '%'}
+  - {role: BeerTag Admins, actorName: Manage Admin Brewery}
+  - {role: BeerTag Admins, actorName: View Beer}
+  - {role: BeerTag Admins, actorName: Manage Beers Admin}
+  - {role: BeerTag Admins, actorName: Add User}
+  - {role: BeerTag Admins, actorName: Authorize Changes (Approve/Reject)}
+  - {role: BeerTag Admins, actorName: Clear Unsuccessful Login Attempts}
+  - {role: BeerTag Admins, actorName: Delete User}
+  - {role: BeerTag Admins, actorName: Edit User}
+  - {role: BeerTag Admins, actorName: List Users}
+  - {role: BeerTag Admins, actorName: Lock / Unlock User}
+  - {role: BeerTag Admins, actorName: User History Log}
+  - {role: BeerTag Admins, actorName: View User}
+
+  - {role: BeerTag Brewery Owners, actorName: Manage Breweries, isDefault: 1, object: '%'}
+  - {role: BeerTag Brewery Owners, actorName: Manage Own Brewery}
+  - {role: BeerTag Brewery Owners, actorName: View Beer}
+  - {role: BeerTag Brewery Owners, actorName: Manage Beers in Stand}
+
+  - {role: BeerTag Public Users, actorName: View Brewery, isDefault: 1, object: '%'}
+  - {role: BeerTag Public Users, actorName: View Beer}
+  - {role: BeerTag Public Users, actorName: Manage Beer List}
+  - {role: BeerTag Public Users, actorName: Write Beer Review}
+  - {role: BeerTag Public Users, actorName: Write Brewery Review}
+
+
+visibleBu:
+  - {role: BeerTag Admins, actorName: 'Software Group', isDefault: 1, object: '%'}
+  - {role: BeerTag Brewery Owners, actorName: 'Software Group', isDefault: 1, object: '%'}
+  - {role: BeerTag Public Users, actorName: 'Software Group', isDefault: 1, object: '%'}

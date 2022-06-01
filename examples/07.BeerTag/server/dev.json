@@ -1,0 +1,41 @@
+{
+    "debug": true,
+    "sqlStandard": true,
+    "utPort": {
+        "logLevel": "debug"
+    },
+    "utBus": {
+        "serviceBus": {
+            "jsonrpc": {
+                "debug": true,
+                "domain": true,
+                "metrics": true
+            }
+        }
+    },
+    "utLog": {
+        "transformData": {
+            "hash": "show",
+            "rawData": "show",
+            "customerEmail": "show",
+            "text": "show",
+            "username": "show",
+            "html": "show",
+            "host": "show",
+            "subject": "show",
+            "to": "show"
+        },
+        "streams": {
+            "sentry": {
+                "level": "error",
+                "stream": "../sentryNodeStream",
+                "streamConfig": {
+                    "dsn": "http://3e94b53a00eb421a8ca8a1f65cd39532@sentry.k8s.softwaregroup-bg.com/5",
+                    "patchGlobal": false,
+                    "logger": "impl-application"
+                },
+                "type": "raw"
+            }
+        }
+    }
+}

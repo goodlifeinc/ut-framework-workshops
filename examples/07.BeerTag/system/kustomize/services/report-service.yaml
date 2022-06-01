@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: report
+    app.kubernetes.io/component: ut-report
+    app.kubernetes.io/instance: report_9.1.15
+    app.kubernetes.io/name: report
+    app.kubernetes.io/version: 9.1.15
+    ut.layer: utReport.orchestrator
+  name: report-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: report
+  type: ClusterIP

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ctp
+    app.kubernetes.io/component: ut-ctp-aptra
+    app.kubernetes.io/instance: ctp_8.1.3
+    app.kubernetes.io/name: ctp
+    app.kubernetes.io/version: 8.1.3
+    ut.layer: utCtpAptra.adapter
+  name: tcp-ncr
+spec:
+  ports:
+    - name: tcp-ncr
+      port: 5000
+      protocol: TCP
+      targetPort: tcp-ncr
+  selector:
+    app.kubernetes.io/name: ctp
+  type: ClusterIP

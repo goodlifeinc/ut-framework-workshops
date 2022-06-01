@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: misc
+    app.kubernetes.io/component: ut-bulk-payment
+    app.kubernetes.io/instance: misc_4.4.8
+    app.kubernetes.io/name: misc
+    app.kubernetes.io/version: 4.4.8
+    ut.layer: utBulk.orchestrator
+  name: utbulk-bulkdispatch-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: misc
+  type: ClusterIP

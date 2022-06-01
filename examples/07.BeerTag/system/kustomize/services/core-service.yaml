@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: core
+    app.kubernetes.io/component: ut-core
+    app.kubernetes.io/instance: core_8.21.15
+    app.kubernetes.io/name: core
+    app.kubernetes.io/version: 8.21.15
+    ut.layer: utCore.orchestrator
+  name: core-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: core
+  type: ClusterIP

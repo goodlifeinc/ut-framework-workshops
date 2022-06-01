@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: notice
+    app.kubernetes.io/component: ut-notice
+    app.kubernetes.io/instance: notice_8.5.21
+    app.kubernetes.io/name: notice
+    app.kubernetes.io/version: 8.5.21
+    ut.layer: utNotice.orchestrator
+  name: utnotice-noticedispatch-service
+spec:
+  ports:
+    - name: http-jsonrpc
+      port: 8090
+      protocol: TCP
+      targetPort: http-jsonrpc
+  selector:
+    app.kubernetes.io/name: notice
+  type: ClusterIP

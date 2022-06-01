@@ -1,0 +1,212 @@
+### CORS
+OPTIONS http://localhost:8004/rpc/login
+Access-Control-Request-Method: POST
+Origin: test
+
+### access token
+# @name client_credentials
+POST http://localhost:8004/rpc/login/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=sa&client_secret=123
+
+### refresh access token
+POST http://localhost:8004/rpc/login/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&refresh_token=Ze1nKsf10rfD6uxjItDxWvJ0t88Jn7t%2BdX%2FFtEB37yC335q8Xm0mdhRu4YZnXzRzkcbQc7Vh5VCgl%2BUSHPn2gkgjf5FQd2gkQN32Q5kLCXspey2%2FY8t%2BKbHgyrsbz4b6b3u6t5um30fB0b3Tka4Dp9Tj0hFRuJQqs2TXh58z7p9%2BCUjYjkRoXbnabE9tcghA6jg6cuOn5J6oTri%2FYznhgST0vDtwibBmL4I0fLi%2B7olkJJ9dgZ34NwX5W4xgduxTon0%2Fy13gU3RFyamY%2FYPBZbXriqvczJuhjjhNyp4ANaEMACfgiHCU5wvU9CTfGwVy
+
+### login
+# @name login
+POST http://localhost:8004/rpc/login/identity/check
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "login.identity.check",
+    "id": 1,
+    "params": {
+        "channel": "web",
+        "username": "sa",
+        "password": "123"
+    }
+}
+
+### jwt
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/user/permission/get
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "user.permission.get",
+    "id": 1,
+    "params": {
+        "actionId": "yyy",
+        "objectId": "xxx"
+    }
+}
+
+### id_token
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/login/oidc/token
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "login.oidc.token",
+    "id": 1,
+    "params": {
+        "audience": "http://www.store.bg"
+    }
+}
+
+### token
+POST http://localhost:8004/rpc/login/token
+content-type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=umxDEV1CWCV1UPKSq5b9Qg8FHLKI%2B9%2FPMo4ijkEhdEWIJwQy5WWS7M0K0IuvTm3b%2BV%2BZ1MqATqb64VyNCjnnNw%3D%3D&client_id=sa&client_secret=123&redirect_uri=http%3A%2F%2Flocalhost%3A8090%2Foauth2-redirect.html
+
+### policy
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/user/role/edit
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "user.role.edit",
+    "id": 1,
+    "params": {
+        "role": {
+            "actorId": 1137,
+            "name": "AML API",
+            "description": "AML API",
+            "isEnabled": 1,
+            "isDeleted": 0,
+            "fieldOfWorkId": 614,
+            "isSystem": 1
+        },
+        "policyId": 6
+    }
+}
+
+### user dropdown
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/user/dropdown/list
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"jsonrpc":"2.0","method":"user.dropdown.list","params":{},"id":10}
+
+### customer dropdown
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/customer/dropdown/list
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"jsonrpc":"2.0","method":"customer.dropdown.list","params":{},"id":10}
+
+### core dropdown
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/core/dropdown/list
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"jsonrpc":"2.0","method":"core.dropdown.list","params":{},"id":10}
+
+### wallet
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8005/rpc/wallet/transactions/fetchV2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "wallet.transactions.fetchV2",
+    "id": 1,
+    "params": {
+        "product": "account",
+        "identifier": "bulkCredit123",
+        "startDate": "2021-07-14T09:33:07.770Z",
+        "channel": ["atm"],
+        "status": ["completed"]
+    }
+}
+
+### jwt
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/core/externalSystem/get
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "core.externalSystem.get",
+    "id": 1,
+    "params": {
+        "externalSystemId": 6
+    }
+}
+
+### upload
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/document/document/upload
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=---------------------------9051914041544843365972754266
+Content-Length: 554
+
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="text"
+
+text default
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="file1"; filename="a.txt"
+Content-Type: text/plain
+
+Content of a.txt.
+
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="file"; filename="a.html"
+Content-Type: text/html
+
+<!DOCTYPE html><title>Content of a.html.</title>
+<body>
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+****************************************************************************************************
+</body>
+
+-----------------------------9051914041544843365972754266--
+
+### jwt
+@token = {{login.response.body.$.result.access_token}}
+POST http://localhost:8004/rpc/core/language/fetch
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "jsonrpc": "2.0",
+    "method": "ZAP%n%s",
+    "id": 1,
+    "params": {}
+}

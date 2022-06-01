@@ -1,0 +1,16 @@
+### agent.network.add
+POST http://localhost:8004/rpc HTTP/1.1
+accept: application/json
+x-xsrf-token: 5034fc71-8f6a-478b-bc01-7869f13cb3c6
+
+{
+    "id":12,
+    "jsonrpc":"2.0",
+    "method":"agent.network.add",
+    "params":{
+        "organizationName": "",
+        "description": "",
+        "parent": 1001,
+        "networkTypeIds": 1
+    }
+}

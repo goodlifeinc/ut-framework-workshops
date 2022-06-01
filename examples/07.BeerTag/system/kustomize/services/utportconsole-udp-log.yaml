@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: console
+    app.kubernetes.io/component: ut-telemetry
+    app.kubernetes.io/instance: console_7.2.3
+    app.kubernetes.io/name: console
+    app.kubernetes.io/version: 7.2.3
+    ut.layer: console
+  name: utportconsole-udp-log
+spec:
+  clusterIP: None
+  ports:
+    - name: udp-log
+      port: 30001
+      protocol: UDP
+      targetPort: udp-log
+  selector:
+    app.kubernetes.io/name: console
+  type: ClusterIP
