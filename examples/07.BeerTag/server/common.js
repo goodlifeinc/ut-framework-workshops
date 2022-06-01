@@ -329,7 +329,7 @@ module.exports = {
     },
     utMirrors: true,
     firebase: {
-        apiKey: 'AAAAzS-tQPM:APA91bHoVcdY-QYDpRniu3zA2WZwB6lXB0uun8tsShp4MjBrABdo5vcrGUp0dhmutSiZ_NltphZgH1m9krCqJRqCseLS2xrwG_wPakg-38lpQ_utpwttWvHOJBcKotcvOgJeuVcKhQCP'
+        apiKey: '----'
     },
     cron: {
         jobsList: {
@@ -341,7 +341,7 @@ module.exports = {
     },
     push: {
         firebase: {
-            apiKey: 'AAAAzS-tQPM:APA91bHoVcdY-QYDpRniu3zA2WZwB6lXB0uun8tsShp4MjBrABdo5vcrGUp0dhmutSiZ_NltphZgH1m9krCqJRqCseLS2xrwG_wPakg-38lpQ_utpwttWvHOJBcKotcvOgJeuVcKhQCP',
+            apiKey: '-----',
             baseUrl: 'https://fcm.googleapis.com',
             endpoints: {
                 send: '/fcm/send'
