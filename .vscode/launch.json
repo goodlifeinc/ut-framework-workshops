@@ -61,6 +61,9 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
+			"env": {
+				"UT_ENV": "uat"
+			},
 			"program": "${workspaceFolder}\\examples\\06.User Login\\index.js",
 			"console": "integratedTerminal",
 		}
