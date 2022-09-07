@@ -1,0 +1,13 @@
+{
+  "name": "12.playwright-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "register.test.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.25.1"
+  }
+}
