@@ -3,7 +3,7 @@ import register from './common/register';
 
 const BASE_URL = 'http://localhost:5000';
 const username = `evgeni.atanasov+pw${Math.floor(Math.random() * (1000 - 1 + 1)) + 1}@softwaregroup.com`;
-const password = 'Sg@12345';
+const password = 'Pass@12345';
 const linkRx = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/;
 let activationLink = null;
 
