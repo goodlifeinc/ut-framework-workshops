@@ -1,0 +1,74 @@
+### hello world
+POST http://localhost:8080/rpc/subject/object/predicate
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {}
+}
+
+### login
+@name login
+POST http://localhost:8080/rpc/user/user/login
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.login",
+    "params": {
+        "name": "john",
+        "password": "123"
+    }
+}
+
+### hello john
+@token = {{login.response.body.$.result}}
+POST http://localhost:8080/rpc/subject/object/predicate
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {
+        "name": "Evgeni"
+    }
+}
+
+### sign up firebase
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
+Content-Type: application/json
+
+{
+    "email": "[USER_EMAIL]",
+    "password": "[USER_PASS]"
+}
+
+
+### sign in firebase
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
+Content-Type: application/json
+
+{
+    "email": "[USER_EMAIL]",
+    "password": "[USER_PASS]"
+}
+
+
+### login
+POST http://localhost:8080/rpc/user/firebase/login
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.firebase.login",
+    "params": {
+        "username": "[USER_EMAIL]",
+        "password": "[USER_PASS]"
+    }
+}

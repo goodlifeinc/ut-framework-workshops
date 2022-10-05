@@ -66,6 +66,19 @@
 			},
 			"program": "${workspaceFolder}\\examples\\06.User Login\\index.js",
 			"console": "integratedTerminal",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "Launch User Login Firebase",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"env": {
+				"UT_ENV": "dev"
+			},
+			"program": "${workspaceFolder}\\examples\\13.User Login ut-firebase\\index.js",
+			"console": "integratedTerminal",
 		}
 	]
 }
