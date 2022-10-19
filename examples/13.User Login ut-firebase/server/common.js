@@ -22,8 +22,12 @@ module.exports = {
     },
     utUser: {
         orchestrator: true,
-        gateway: true,
-        firebase: {
+        gateway: true
+    },
+    utFirebase: {
+        orchestrator: true,
+        adapter: true,
+        firebaseClient: {
             key: '--set from config file--'
         }
     }

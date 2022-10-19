@@ -20,6 +20,11 @@ module.exports = () =>
                         const valid = token === config.jwtToken;
                         if (!valid) throw new Error('Unauthorized');
                         return { name, actorId };
+                    },
+                    async 'login.firebase.auth'(msg, $meta) {
+                        const response = await this.bus.importMethod('firebase.user.login')(msg, $meta);
+
+                        return response?.payload;
                     }
                 })
             ]

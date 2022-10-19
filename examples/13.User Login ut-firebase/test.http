@@ -60,13 +60,13 @@ Content-Type: application/json
 
 
 ### login
-POST http://localhost:8080/rpc/user/firebase/login
+POST http://localhost:8080/rpc/user/user/login
 Content-Type: application/json
 
 {
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "user.firebase.login",
+    "method": "user.user.login",
     "params": {
         "username": "[USER_EMAIL]",
         "password": "[USER_PASS]"
