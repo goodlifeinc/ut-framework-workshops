@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "node-jose": "^2.1.1",
     "tap": "^15.1.6",
     "ut-function.dispatch": "^1.4.1",
     "ut-function.timezone": "^1.1.0",

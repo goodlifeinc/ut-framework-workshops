@@ -28,6 +28,18 @@ module.exports = (...params) => {
                             email
                         }
                     };
+                },
+                'firebaseClient.certs.get.request.send'() {
+                    return {
+                        url: 'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com',
+                        httpMethod: 'get'
+                    };
+                },
+                'firebaseClient.jwks.get.request.send'() {
+                    return {
+                        url: 'https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com',
+                        httpMethod: 'get'
+                    };
                 }
             };
         }

@@ -72,3 +72,31 @@ Content-Type: application/json
         "password": "[USER_PASS]"
     }
 }
+
+
+### verifyToken after register
+POST http://localhost:8080/rpc/user/user/tokenVerify
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.tokenVerify",
+    "params": {
+        "token": "[TOKEN]"
+    }
+}
+
+
+### verifyToken after login
+POST http://localhost:8080/rpc/user/user/tokenVerify
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.tokenVerify",
+    "params": {
+        "token": "[TOKEN]"
+    }
+}
