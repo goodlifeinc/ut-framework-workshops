@@ -1,0 +1,20 @@
+{
+  "name": "ut-login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tap": "^15.1.6",
+    "ut-function.dispatch": "^1.4.1",
+    "ut-function.timezone": "^1.1.0",
+    "ut-gateway": "^7.4.1",
+    "ut-port-script": "^7.2.0",
+    "ut-run": "^10.64.13"
+  }
+}

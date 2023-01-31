@@ -1,0 +1,103 @@
+### hello world
+POST http://localhost:8080/rpc/subject/object/predicate
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {}
+}
+
+### login
+@name login
+POST http://localhost:8080/rpc/user/user/login
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.login",
+    "params": {
+        "name": "john",
+        "password": "123"
+    }
+}
+
+### hello john
+@token = {{login.response.body.$.result}}
+POST http://localhost:8080/rpc/subject/object/predicate
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "subject.object.predicate",
+    "params": {
+        "name": "Evgeni"
+    }
+}
+
+### sign up firebase
+POST https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
+Content-Type: application/json
+
+{
+    "email": "[USER_EMAIL]",
+    "password": "[USER_PASS]"
+}
+
+
+### sign in firebase
+POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDry25o0oyGBT3JYLNOJpWUNNh4ZCsxwNA
+Content-Type: application/json
+
+{
+    "email": "evgeni.atanasov+test3@softwaregroup.com",
+    "password": "Sg@12345",
+    "returnSecureToken": true
+}
+
+
+### login
+POST http://localhost:8080/rpc/user/user/login
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.login",
+    "params": {
+        "username": "[USER_EMAIL]",
+        "password": "[USER_PASS]"
+    }
+}
+
+
+### verifyToken after register
+POST http://localhost:8080/rpc/user/user/tokenVerify
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.tokenVerify",
+    "params": {
+        "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjMzdkNTkzNjVjNjIyOGI4Y2NkYWNhNTM2MGFjMjRkMDQxNWMxZWEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vd29ya3Nob3AtYXBwLTU5OTU2IiwiYXVkIjoid29ya3Nob3AtYXBwLTU5OTU2IiwiYXV0aF90aW1lIjoxNjY3ODA2MDIxLCJ1c2VyX2lkIjoiTmQ5UzdFQWNsVk54TzhBOFFSdkFOSHlZOHBQMiIsInN1YiI6Ik5kOVM3RUFjbFZOeE84QThRUnZBTkh5WThwUDIiLCJpYXQiOjE2Njc4MDYwMjEsImV4cCI6MTY2NzgwOTYyMSwiZW1haWwiOiJldmdlbmkuYXRhbmFzb3YrdGVzdDNAc29mdHdhcmVncm91cC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZXZnZW5pLmF0YW5hc292K3Rlc3QzQHNvZnR3YXJlZ3JvdXAuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.a1nAOEJcXGCPTYO9TleIRQfVTFKRXhePILBoDpZCfoHWhuusNvoXnsNczheX8hWYpK9QEPtqpY-cv-vtpSrvcw-Nfzx_-I2mgebCoXuEO7QJ5QL0x2U2gVnO2UTAa6VAoUCOhpJImwN1WFCludrZcOUru5sXim0poXU9Tha5g5u27QB5rXYcE0JodpbpdrSV9jZ8s-k4YrjwHf99F8aBsYbYEYLK7v5ASz2TCiaLNdjykg9DeXSLcra0f_Yk_JF5-xNPnvmZ1i3XdINP7B8AdwNEB7cDZfz4hZ1ixgy6lQn3E1vrjeK9mpB55mRDu2EhujaP8cO0K2IcINMi-Xb2yg"
+    }
+}
+
+
+### verifyToken after login
+POST http://localhost:8080/rpc/user/user/tokenVerify
+Content-Type: application/json
+
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "user.user.tokenVerify",
+    "params": {
+        "token": "[TOKEN]"
+    }
+}
