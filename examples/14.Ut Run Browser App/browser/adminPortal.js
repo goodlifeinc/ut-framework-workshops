@@ -1,6 +1,6 @@
 require('ut-run').run({
     main: (...params) => [
-        require('../ut-user/browser')(...params)
+        require('../ut-user')(...params)
     ],
     config: [
         require('./common'),
